@@ -1,6 +1,6 @@
-const express = require("express");
-const { register, login, getMe } = require("../controllers/auth.controller.js");
-const { protect } = require("../middlewares/auth.middleware.js");
+import express from "express";
+import { register, login, getMe } from "../controllers/auth.controller.js";
+import { protect } from "../middlewares/auth.middleware.js";
 
 const router = express.Router();
 
@@ -11,4 +11,4 @@ router.post("/login", login);
 // Protected routes (authentication required)
 router.get("/me", protect, getMe);
 
-module.exports = router;
+export default router;

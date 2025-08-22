@@ -1,8 +1,8 @@
-const jwt = require("jsonwebtoken");
-const User = require("../models/User.model.js");
+import jwt from "jsonwebtoken";
+import User from "../models/User.model.js";
 
 // Protect routes - verify JWT token
-exports.protect = async (req, res, next) => {
+export const protect = async (req, res, next) => {
   try {
     let token;
 
@@ -48,7 +48,7 @@ exports.protect = async (req, res, next) => {
 };
 
 // Check if user has premium subscription
-exports.requirePremium = (req, res, next) => {
+export const requirePremium = (req, res, next) => {
   if (req.user.subscriptionTier !== "premium") {
     return res.status(403).json({
       success: false,

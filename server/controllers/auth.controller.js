@@ -1,5 +1,5 @@
-const User = require("../models/User.model.js");
-const jwt = require("jsonwebtoken");
+import User from "../models/User.model.js";
+import jwt from "jsonwebtoken";
 
 // Helper function to create JWT token
 const generateToken = (userId) => {
@@ -28,7 +28,7 @@ const sendTokenResponse = (user, statusCode, res) => {
 };
 
 // Register new user
-exports.register = async (req, res) => {
+export const register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
@@ -59,7 +59,7 @@ exports.register = async (req, res) => {
 };
 
 // Login user
-exports.login = async (req, res) => {
+export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -102,7 +102,7 @@ exports.login = async (req, res) => {
 };
 
 // Get current user info (protected route)
-exports.getMe = async (req, res) => {
+export const getMe = async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
 
