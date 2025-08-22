@@ -91,10 +91,14 @@ jobs:
           name: frontend-build
           path: client/dist
 
-  # Security Scanning
+  #  # Security Scanning
   security-scan:
     runs-on: ubuntu-latest
     needs: [test-backend, test-frontend]
+
+    permissions:
+      contents: read
+      security-events: write
 
     steps:
       - name: Checkout code
