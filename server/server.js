@@ -4,8 +4,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 
 // Import routes
-import authRoutes from "./routes/auth.js";
-import habitRoutes from "./routes/habits.js";
+import authRoutes from "./routes/auth.route.js";
+import habitRoutes from "./routes/habit.route.js";
 
 // Load environment variables
 dotenv.config();
@@ -97,7 +97,7 @@ app.use((err, req, res, next) => {
 });
 
 // 404 handler
-app.use("*", (req, res) => {
+app.use((req, res) => {
   res.status(404).json({
     success: false,
     message: "Route not found",
